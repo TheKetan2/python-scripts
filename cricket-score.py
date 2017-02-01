@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 str1 = ""
 url = "http://www.espncricinfo.com/india-v-england-2016-17/engine/match/1034829.html"
-#change the value of url to the live cricket match which you want to track
+#change the value of url to the url of the live cricket match which you want to track
 while True:
 	r = requests.get(url)
 	soup = BeautifulSoup(r.content)
