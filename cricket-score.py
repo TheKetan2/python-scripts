@@ -1,3 +1,6 @@
+#author:Ketan D Ramteke
+#https://www.facebook.com/ketan.ramteke.794
+
 import random
 import requests
 import time
