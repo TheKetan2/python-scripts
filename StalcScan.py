@@ -4,482 +4,327 @@ import requests
 from bs4 import BeautifulSoup
 
 
+master = Tk()
+master.title("Facebook Stalk Tool by K2")
+#root = Tk()
+#root.title("Step 1 : Enter FB URL")
 url = ""
 txt = ""
 
+
+# get ID of USER
+def get_id():
+    url = e1.get()
+    r = requests.get(url)
+    soup = BeautifulSoup(r.content)
+    str = soup.findAll("a", {"class": "uiButton uiButtonSpecial uiButtonLarge"})
+    id = unicode.join(u'\n', map(unicode, str))
+    show_id.config(text=("ID : "+(id[(id.find("_id=") + 4):(id.find("&"))])));
+    print (id[(id.find("_id=") + 4):(id.find("&"))])
+    return id[(id.find("_id=") + 4):(id.find("&"))]
+
+
+# assign id to var txt
+def assign_id():
+    txt = str(get_id())
+    print ("From assign id"+txt+" "+str(type(txt)))
+    type(txt)
+
+print ("Updated id: "+txt)
+
 def photos_of():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/photos-by/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/photos-by/')
+
 
 def videos_of():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/videos-of/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/videos-of/')
+
 
 def stories_of():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/stories-of/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/stories-of/')
+
 
 def groups_of():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/groups')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/groups')
 
 
 def events_of():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/events-joined')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/events-joined')
+
 
 def past_events_of():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/events-joined/in-past/date/events/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/events-joined/in-past/date/events/intersect/')
+
 
 def games_of():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/apps-used/game/apps/intersect')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/apps-used/game/apps/intersect')
+
 
 def apps_of():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/apps-used/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/apps-used/')
 
 
 def show_photos():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/photos-of/intersect')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/photos-of/intersect')
+
 
 def show_vdos():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/videos-of/intersect')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/videos-of/intersect')
+
 
 def show_stories():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/stories-tagged/intersect')
-	
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/stories-tagged/intersect')
+
 
 def show_vdos():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/videos-of/intersect')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/videos-of/intersect')
+
 
 def photo_comment():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/photos-commented/intersect')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/photos-commented/intersect')
+
 
 def liked_vdos():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/videos-liked/intersect')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/videos-liked/intersect')
+
 
 def liked_photos():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/photos-liked/intersect')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/photos-liked/intersect')
+
 
 def liked_story():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/stories-liked/intersect')
-	
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/stories-liked/intersect')
+
 
 def place_visited():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/places-visited/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/')
+
 
 def bar_visited():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/places-visited/110290705711626/places/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/110290705711626/places/intersect/')
 
 
 def restaurent_visited():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/places-visited/273819889375819/places/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/273819889375819/places/intersect/')
 
 
 def stores_visited():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/places-visited/200600219953504/places/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/200600219953504/places/intersect/')
+
 
 def outdoor_visited():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/places-visited/935165616516865/places/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/935165616516865/places/intersect/')
+
 
 def hotels_visited():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/places-visited/164243073639257/places/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/164243073639257/places/intersect/')
+
 
 def theaters_visited():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/places-visited/192511100766680/places/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/192511100766680/places/intersect/')
+
 
 def pages_visited():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/pages-liked/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/intersect/')
+
 
 def politics():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/pages-liked/161431733929266/pages/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/161431733929266/pages/intersect/')
+
 
 def religion():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/pages-liked/religion/pages/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/religion/pages/intersect/')
+
 
 def music():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/pages-liked/musician/pages/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/musician/pages/intersect/')
+
 
 def movie():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/pages-liked/movie/pages/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/movie/pages/intersect/')
+
 
 def book():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/pages-liked/book/pages/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/book/pages/intersect/')
+
 
 def places():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/places-liked/')
-	
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-liked/')
+
+
 def family():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/relatives/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/relatives/intersect/')
+
 
 def friends():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/friends/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/friends/intersect/')
+
 
 def friend_of_friend():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/friends/friends/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/friends/friends/intersect/')
+
 
 def co_worker():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/employees/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/employees/intersect/')
+
 
 def classmates():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/schools-attended/ever-past/intersect/students/intersect/')
+    webbrowser.open(
+        'https://www.facebook.com/search/' + str(get_id()) + '/schools-attended/ever-past/intersect/students/intersect/')
 
 
 def locals():
-	url = e1.get()
-	r = requests.get(url)
-	soup = BeautifulSoup(r.content)	
-	str = soup.findAll("a",{"class":"uiButton uiButtonSpecial uiButtonLarge"})
-	txt = unicode.join(u'\n',map(unicode,str))
-	print (txt[(txt.find("_id=")+4):(txt.find("&"))])
-	#Label(master,text = txt[(txt.find("_id=")+4):(txt.find("&"))]).pack()
-	webbrowser.open('https://www.facebook.com/search/'+txt[(txt.find("_id=")+4):(txt.find("&"))]+'/current-cities/residents-near/present/intersect/')
+    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/current-cities/residents-near/present/intersect/')
 
 
 
-master = Tk()
 
-#returns facebook is 
+# returns facebook is
 
-Label(master,text="FB URL: ").grid(row=0,column=1)
+l1 = Label(master, text="FB URL: ",fg="red")
+l1.grid(row=0, column=1)
 
-e1 = Entry(master).grid(row=0,column=2)
+e1 = Entry(master, width=60)
+e1.insert(0,"Enter Profile URL Here")
+e1.grid(row=0, column=2,rowspan=1,columnspan=3)
 
+b1 = Button(master, text="Search", command=assign_id,width=15)
+b1.grid(row=0, column=5)
+show_id = Label(master, text="ID : ",fg="red")
+show_id.grid(row=0, column=6)
+# Profiles
+l2 = Label(master, text="Profiles",fg="red")
+l2.grid(row=1, column=1)
 
+b2 = Button(master, text="Photos", command=photos_of,width=15)
+b2.grid(row=2, column=1)
 
-#Profiles
-Label(master,text="Profiles").pack()
+b3 = Button(master, text="Videos", command=videos_of,width=15)
+b3.grid(row=2, column=2)
 
-Button(master,text="Photos",command=photos_of).grid(row=2,column=1)
+b4 = Button(master, text="Story", command=stories_of,width=15)
+b4.grid(row=2, column=3)
 
-Button(master,text="Videos",command=videos_of).grid(row=2,column=2)
+b5 = Button(master, text="Groups", command=groups_of,width=15)
+b5.grid(row=2, column=4)
 
-Button(master,text="Story",command=stories_of).grid(row=2,column=3)
+b6 = Button(master, text="Events", command=events_of,width=15)
+b6.grid(row=2, column=5)
 
-Button(master,text="Groups",command=groups_of).grid(row=2,column=4)
+b7 = Button(master, text="Past Events", command=past_events_of,width=15)
+b7.grid(row=2, column=6)
 
-Button(master,text="Events",command=events_of).grid(row=2,column=5)
+b8 = Button(master, text="Games", command=games_of,width=15)
+b8.grid(row=2, column=7)
 
-Button(master,text="Past Events",command=past_events_of).grid(row=2,column=6)
+b9 = Button(master, text="Apps", command=apps_of,width=15)
+b9.grid(row=2, column=8)
 
-Button(master,text="Games",command=games_of).grid(row=2,column=7)
+# Tags
+l3 = Label(master, text="Tags",fg="red")
+l3.grid(row=3, column=1)
 
-Button(master,text="Apps",command=apps_of).grid(row=2,column=8)
+b10 = Button(master, text="Photos", command=show_photos,width=15)
+b10.grid(row=4, column=1)
 
+b11 = Button(master, text="Videos", command=show_vdos,width=15)
+b11.grid(row=4, column=2)
 
-#Tags
-Label(master,text="Tags").grid(row=3,column=1)
+b12 = Button(master, text="Videos", command=show_stories,width=15)
+b12.grid(row=4, column=3)
 
-Button(master,text="Photos",command=show_photos).grid(row=4,column=1)
+# Commented On
+l4 = Label(master, text="Commented On",fg="red")
+l4.grid(row=5, column=1)
 
-Button(master,text="Videos",command=show_vdos).grid(row=4,column=2)
+b13 = Button(master, text="Photos", command=photo_comment,width=15)
+b13.grid(row=6, column=1)
 
-Button(master,text="Videos",command=show_stories).grid(row=4,column=3)
+# Liked
+l5 = Label(master, text="Liked",fg="red")
+l5.grid(row=7, column=1)
 
-Label(master,text="Commented On").pack()
+b14 = Button(master, text="Videos", command=liked_vdos,width=15)
+b14.grid(row=8, column=1)
 
-Button(master,text="Photos",command=photo_comment).grid(row=6,column=1)
+b15 = Button(master, text="Photos", command=liked_photos,width=15)
+b15.grid(row=8, column=2)
 
+b16 = Button(master, text="Story", command=liked_story,width=15)
+b16.grid(row=8, column=3)
 
-#Liked
-Label(master,text="Liked").pack()
+# Places
+l5 = Label(master, text="Places",fg="red")
+l5.grid(row=9, column=1)
 
-Button(master,text="Videos",command=liked_vdos).grid(row=8,column=1)
+b17 = Button(master, text="All", command=place_visited,width=15)
+b17.grid(row=10, column=1)
 
-Button(master,text="Photos",command=liked_photos).grid(row=8,column=2)
+b18 = Button(master, text="Bar", command=bar_visited,width=15)
+b18.grid(row=10, column=2)
 
+b19 = Button(master, text="Restarents", command=restaurent_visited,width=15)
+b19.grid(row=10, column=3)
 
-Button(master,text="Story",command=liked_story).grid(row=8,column=3)
+b20 = Button(master, text="Stores", command=stores_visited,width=15)
+b20.grid(row=10, column=4)
 
+b21 = Button(master, text="Outdoor", command=outdoor_visited,width=15)
+b21.grid(row=10, column=5)
 
-#Places
-Label(master,text="Places").pack()
+b22 = Button(master, text="Hotels", command=hotels_visited,width=15)
+b22.grid(row=10, column=6)
 
-Button(master,text="All",command=place_visited).grid(row=10,column=1)
+b23 = Button(master, text="Theatres", command=theaters_visited,width=15)
+b23.grid(row=10, column=7)
 
-Button(master,text="Bar",command=bar_visited).grid(row=10,column=2)
+# People
+l6 = Label(master, text="People",fg="red")
+l6.grid(row=11, column=1)
 
-Button(master,text="Restarents",command=restaurent_visited).grid(row=10,column=3)
+b24 = Button(master, text="Family", command=family,width=15)
+b24.grid(row=12, column=1)
 
-Button(master,text="Stores",command=stores_visited).grid(row=10,column=4)
+b25 = Button(master, text="Friends", command=friends,width=15)
+b25.grid(row=12, column=2)
 
-Button(master,text="Outdoor",command=outdoor_visited).grid(row=10,column=5)
+b26 = Button(master, text="Friends of Friends", command=friend_of_friend,width=15)
+b26.grid(row=12, column=3)
 
-Button(master,text="Hotels",command=hotels_visited).grid(row=10,column=6)
+b27 = Button(master, text="Co Worker", command=co_worker,width=15)
+b27.grid(row=12, column=4)
 
-Button(master,text="Theatres",command=theaters_visited).grid(row=10,column=7)
+b28 = Button(master, text="Classmates", command=classmates,width=15)
+b28.grid(row=12, column=5)
 
+b29 = Button(master, text="Locals", command=locals,width=15)
+b29.grid(row=12, column=6)
 
-#People
-Label(master,text="People").pack()
+# Interests
+l7 = Label(master, text="Interests",fg="red")
+l7.grid(row=13, column=1)
 
-Button(master,text="Family",command=family).grid(row=12,column=1)
+b30 = Button(master, text="Pages", command=pages_visited,width=15)
+b30.grid(row=13, column=1)
 
-Button(master,text="Friends",command=friends).grid(row=12,column=2)
+b31 = Button(master, text="Political", command=politics,width=15)
+b31.grid(row=13, column=2)
 
-Button(master,text="Friends of Friends",command=friend_of_friend).grid(row=12,column=3)
+b32 = Button(master, text="Religion", command=religion,width=15)
+b32.grid(row=13, column=3)
 
-Button(master,text="Co Worker",command=co_worker).grid(row=12,column=4)
+b33 = Button(master, text="Music", command=music,width=15)
+b33.grid(row=13, column=4)
 
-Button(master,text="Classmates",command=classmates).grid(row=12,column=5)
+b34 = Button(master, text="Movies", command=movie,width=15)
+b34.grid(row=13, column=5)
 
-Button(master,text="Locals",command=locals).grid(row=12,column=6)
+b35 = Button(master, text="Books", command=book,width=15)
+b35.grid(row=13, column=6)
 
-#Interests
-Label(master,text="Interests").pack()
+b36 = Button(master, text="Places", command=places,width=15)
+b36.grid(row=13, column=7)
 
-Button(master,text="Pages",command=pages_visited).grid(row=13,column=1)
-
-Button(master,text="Political Parties",command=politics).grid(row=13,column=2)
-
-Button(master,text="Religion",command=religion).grid(row=13,column=3)
-
-Button(master,text="Music",command=music).grid(row=13,column=4)
-
-Button(master,text="Movies",command=movie).grid(row=13,column=5)
-
-Button(master,text="Books",command=book).grid(row=13,column=6)
-
-Button(master,text="Places",command=places).grid(row=13,column=7)
-
-
+author = Label(master,text="BY Ketan Ramteke")
+author.grid(row=15,column=7)
 mainloop()
