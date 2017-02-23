@@ -10,19 +10,29 @@ master.title("Facebook Stalk Tool by K2")
 #root.title("Step 1 : Enter FB URL")
 url = ""
 txt = ""
-
-
 # get ID of USER
-def get_id():
-    url = e1.get()
-    r = requests.get(url)
-    soup = BeautifulSoup(r.content)
-    str = soup.findAll("a", {"class": "uiButton uiButtonSpecial uiButtonLarge"})
-    id = unicode.join(u'\n', map(unicode, str))
-    show_id.config(text=("ID : "+(id[(id.find("_id=") + 4):(id.find("&"))])));
-    print (id[(id.find("_id=") + 4):(id.find("&"))])
-    return id[(id.find("_id=") + 4):(id.find("&"))]
 
+def valid_url():
+    if(e1.get().find("www.facebook.com") != -1):
+        return TRUE
+    else:
+        return FALSE
+
+
+def get_id():
+    global f
+    f = FALSE
+    url = e1.get()
+    if(url.find("www.facebook.com") != -1):
+        r = requests.get(url)
+        soup = BeautifulSoup(r.content)
+        str = soup.findAll("a", {"class": "uiButton uiButtonSpecial uiButtonLarge"})
+        id = unicode.join(u'\n', map(unicode, str))
+        show_id.config(text=("ID : "+(id[(id.find("_id=") + 4):(id.find("&"))])))
+        print (id[(id.find("_id=") + 4):(id.find("&"))])
+        return id[(id.find("_id=") + 4):(id.find("&"))]
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 # assign id to var txt
 def assign_id():
@@ -33,149 +43,221 @@ def assign_id():
 print ("Updated id: "+txt)
 
 def photos_of():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/photos-by/')
+    if(valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/photos-by/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 
 def videos_of():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/videos-of/')
-
+    if(valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/videos-of/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def stories_of():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/stories-of/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/stories-of/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def groups_of():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/groups')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/groups')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def events_of():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/events-joined')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/events-joined')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def past_events_of():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/events-joined/in-past/date/events/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/events-joined/in-past/date/events/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def games_of():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/apps-used/game/apps/intersect')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/apps-used/game/apps/intersect')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def apps_of():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/apps-used/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/apps-used/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def show_photos():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/photos-of/intersect')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/photos-of/intersect')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def show_vdos():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/videos-of/intersect')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/videos-of/intersect')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def show_stories():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/stories-tagged/intersect')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/stories-tagged/intersect')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def show_vdos():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/videos-of/intersect')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/videos-of/intersect')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def photo_comment():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/photos-commented/intersect')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/photos-commented/intersect')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def liked_vdos():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/videos-liked/intersect')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/videos-liked/intersect')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def liked_photos():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/photos-liked/intersect')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/photos-liked/intersect')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def liked_story():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/stories-liked/intersect')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/stories-liked/intersect')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def place_visited():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def bar_visited():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/110290705711626/places/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/110290705711626/places/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def restaurent_visited():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/273819889375819/places/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/273819889375819/places/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def stores_visited():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/200600219953504/places/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/200600219953504/places/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def outdoor_visited():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/935165616516865/places/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/935165616516865/places/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def hotels_visited():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/164243073639257/places/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/164243073639257/places/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def theaters_visited():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/192511100766680/places/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-visited/192511100766680/places/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def pages_visited():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def politics():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/161431733929266/pages/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/161431733929266/pages/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def religion():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/religion/pages/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/religion/pages/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def music():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/musician/pages/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/musician/pages/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def movie():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/movie/pages/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/movie/pages/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def book():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/book/pages/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/pages-liked/book/pages/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def places():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-liked/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/places-liked/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def family():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/relatives/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/relatives/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def friends():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/friends/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/friends/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def friend_of_friend():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/friends/friends/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/friends/friends/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def co_worker():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/employees/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/employees/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def classmates():
-    webbrowser.open(
-        'https://www.facebook.com/search/' + str(get_id()) + '/schools-attended/ever-past/intersect/students/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/schools-attended/ever-past/intersect/students/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 def locals():
-    webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/current-cities/residents-near/present/intersect/')
-
+    if (valid_url()):
+        webbrowser.open('https://www.facebook.com/search/' + str(get_id()) + '/current-cities/residents-near/present/intersect/')
+    else:
+        show_id.config(text=("Please Enter Valid URL"))
 
 
 
@@ -305,25 +387,25 @@ l7 = Label(master, text="Interests",fg="red")
 l7.grid(row=13, column=1)
 
 b30 = Button(master, text="Pages", command=pages_visited,width=15)
-b30.grid(row=13, column=1)
+b30.grid(row=14, column=1)
 
 b31 = Button(master, text="Political", command=politics,width=15)
-b31.grid(row=13, column=2)
+b31.grid(row=14, column=2)
 
 b32 = Button(master, text="Religion", command=religion,width=15)
-b32.grid(row=13, column=3)
+b32.grid(row=14, column=3)
 
 b33 = Button(master, text="Music", command=music,width=15)
-b33.grid(row=13, column=4)
+b33.grid(row=14, column=4)
 
 b34 = Button(master, text="Movies", command=movie,width=15)
-b34.grid(row=13, column=5)
+b34.grid(row=14, column=5)
 
 b35 = Button(master, text="Books", command=book,width=15)
-b35.grid(row=13, column=6)
+b35.grid(row=14, column=6)
 
 b36 = Button(master, text="Places", command=places,width=15)
-b36.grid(row=13, column=7)
+b36.grid(row=14, column=7)
 
 author = Label(master,text="BY Ketan Ramteke")
 author.grid(row=15,column=7)
