@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
 url = "https://www.timeanddate.com/worldclock/"
-
 def capital():
     while True:
         country = raw_input("Enter Country: ")

@@ -18,6 +18,3 @@ while True:
 		print str2
 		str1 = str2
 		time.sleep(random.randint(30,200))
-		#sleep function is used to delay refresh rate of website.
-        	
-   
