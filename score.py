@@ -11,7 +11,7 @@ while True:
 	soup = BeautifulSoup(r.content)
 	str2 = soup.find("title").text
 	if(str2 != str1):
-		print "******************"
+		print "*******************"
 		print str2
 		str1 = str2
 		time.sleep(random.randint(30,200))
