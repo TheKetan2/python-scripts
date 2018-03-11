@@ -1,4 +1,4 @@
-#author:Ketan D Ramtek
+#author:Ketan D Ramteke
 import requests
 from bs4 import BeautifulSoup
 url = "https://www.facebook.com/ketan.ramteke.794"
