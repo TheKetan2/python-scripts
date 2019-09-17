@@ -1,4 +1,5 @@
-from Tkinter import *
+from tkinter import *
+
 import webbrowser
 import requests
 from bs4 import BeautifulSoup
